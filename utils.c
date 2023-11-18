@@ -34,7 +34,7 @@ int num_count(int nb)
     return (i);
 }
 
-int unsigned_num_count(unsigned int nb)
+int unsigned_num_count(unsigned long long nb)
 {
 	int	i;
 
@@ -61,6 +61,8 @@ int handle_format(char format, va_list args) {
         return print_hex(args, 0);
     } else if (format == 'X') {
         return print_hex(args, 1);
+    } else if (format == 'p') {
+        return print_ptr(args);
     }
     return (0); // SPECEFIER UNKOWN
 }

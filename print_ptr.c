@@ -12,26 +12,34 @@
 
 #include "ft_printf.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
-
-static char *pointer_to_hex(void *ptr) {
-	int hex_str_len; 
-	char *hex_str;
-
-	hex_str_len = sizeof(ptr) * 2 + 1;
-	*hex_str = (char *)malloc(hex_str_len);
-	if(!hex_str)
-		return(NULL);
-	
+// Still needs to be fixed depending on system
+char* addr_to_hex(void* addr) {
+    uintptr_t address = (uintptr_t)addr;
+    int address_digits = unsigned_num_count(address);
+    char* hexStr = (char*)malloc(sizeof(char) * (address_digits + 3));
+    if (hexStr == NULL) {
+        return NULL;
+    }
+    const char hexDigits[] = "0123456789abcdef";
+    hexStr[0] = '0';
+    hexStr[1] = 'x';
+    address_digits--;
+    while(address_digits > 1)
+    {
+        hexStr[address_digits] = hexDigits[address % 16];
+        address /= 16;
+        address_digits--;
+    }
+    hexStr[18] = '\0';
+    return hexStr;
 }
+
 int print_ptr(va_list args) {
     void *ptr;
     char *hex_str;
 
     ptr = va_arg(args, void *);
-    hex_str = pointer_to_hex(ptr);
+    hex_str = addr_to_hex(ptr);
     if (!hex_str) {
         return 0;
     }
