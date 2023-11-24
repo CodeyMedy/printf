@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:24:42 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 16:38:24 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 18:27:44 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_printf(const char *format, ...)
 	int		i;
 	int		count;
 	va_list	ap;
+    int check;
 
 	va_start(ap, format);
 	i = 0;
@@ -27,7 +28,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			count += handle_format(format[++i], ap);
+            check = handle_format(format[++i], ap);
+            if(check == -1)
+                return (-1);
+			count += check;
 			i++;
 		}
 		else
@@ -38,4 +42,3 @@ int	ft_printf(const char *format, ...)
 	}
 	return (count);
 }
-

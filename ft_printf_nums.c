@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:32:54 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 15:07:22 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 18:16:52 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int print_unsigned_decimals(va_list ap)
 
 	n = va_arg(ap, int);
 	ft_putnbr_unsigned(n);
-	return(ft_nbrlen(n));
+	return(ft_unsigned_nbrlen(n));
 }
 
 int print_decimals(va_list ap)
