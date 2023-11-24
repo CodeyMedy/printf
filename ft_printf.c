@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:24:42 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 18:27:44 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:44:10 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	if (write(1, "", 0) == -1)
 		return (-1);
+	if (format[i] == '%' && format[i + 1] == '\0')
+		return (0);
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')

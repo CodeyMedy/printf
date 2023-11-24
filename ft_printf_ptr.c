@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:33:15 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 18:20:41 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:27:43 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int print_ptr(va_list ap)
 	if(!base)
 		return (-1);
 	ptr = va_arg(ap, void *);
-	address = (long)ptr;
+	address = (unsigned long)ptr;
 	ft_putstr("0x");
 	len = print_unsinged_long_hexa(base, address);
 	free(base);

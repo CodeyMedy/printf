@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:29:28 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 18:19:18 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:34:44 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	handle_format(char flag, va_list ap)
 	else if (flag == '%')
 		return (print_percent());
 	else
-		return (0);
+		{
+			ft_putchar(flag);
+			return (1);
+		};
 }
 
 int ft_nbrlen(int n) 
