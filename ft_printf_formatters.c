@@ -6,23 +6,11 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:38:16 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 15:01:10 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:41:50 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
 
 void	ft_putchar(char c)
 {

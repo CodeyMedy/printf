@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:29:28 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 16:36:07 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:41:55 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,14 @@ int ft_nbrlen(long long n)
     return len;
 }
 
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
+}
