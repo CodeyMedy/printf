@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_unsigned_decimal.c                           :+:      :+:    :+:   */
+/*   ft_printf_chars.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 15:06:14 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/12 17:36:09 by mboukour         ###   ########.fr       */
+/*   Created: 2023/11/24 14:44:14 by mboukour          #+#    #+#             */
+/*   Updated: 2023/11/24 16:12:39 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_unsigned_decimal(va_list arg)
+int print_char(va_list ap)
 {
-	unsigned int num;
+	char c;
 
-	int i;
-	char  *num_str;
+	c = va_arg(ap, int);
+	write(1, &c, 1);
+	return (1);
+}
 
-	num = va_arg(arg, unsigned int);
-	i = 0;
-	num_str = ft_itoa_unsigned(num);
-	if(!num_str)
-		return (-1);
-	ft_putstr_fd(num_str, 1);
-	free(num_str);
-	return (unsigned_num_count(num));
+int print_string(va_list ap)
+{
+	char *str;
+
+	str = va_arg(ap, char *);
+	if (!str)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	ft_putstr(str);
+	return (ft_strlen(str));
+}
+
+int	print_percent(void)
+{
+	ft_putchar('%');
+	return (1);
 }
