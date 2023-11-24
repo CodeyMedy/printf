@@ -6,7 +6,7 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:29:28 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 19:34:44 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:15:55 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,47 @@ int	handle_format(char flag, va_list ap)
 	else if (flag == '%')
 		return (print_percent());
 	else
-		{
-			ft_putchar(flag);
-			return (1);
-		};
+	{
+		ft_putchar(flag);
+		return (1);
+	}
 }
 
-int ft_nbrlen(int n) 
+int	ft_nbrlen(int n)
 {
-	int len = 0;
+	int	len;
 
+	len = 0;
 	if (n == 0)
 		return (1);
 	if (n == -2147483648)
 		return (11);
-    if (n < 0) {
-        len++;
-        n = -n;
-    }
-
+	if (n < 0)
+	{
+		len++;
+		n = -n;
+	}
 	while (n > 0)
-    {
-        n /= 10;
-        len++;
-    } 
-    return len;
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
-int ft_unsigned_nbrlen(unsigned int n) 
-{
-	int len = 0;
 
+int	ft_unsigned_nbrlen(unsigned int n)
+{
+	int	len;
+
+	len = 0;
 	if (n == 0)
 		return (1);
 	while (n > 0)
 	{
 		n /= 10;
 		len++;
-	} 
-	return len;
+	}
+	return (len);
 }
 
 int	ft_strlen(char *s)

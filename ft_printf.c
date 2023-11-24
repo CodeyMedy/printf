@@ -6,20 +6,32 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:24:42 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 19:44:10 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:22:06 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	handle_non_format(const char *format, int *i)
+{
+	int	count;
+
+	count = 0;
+	while (format[*i] && format[*i] != '%')
+	{
+		ft_putchar(format[*i]);
+		(*i)++;
+		count++;
+	}
+	return (count);
+}
+
+int	start_printf(const char *format, va_list ap)
 {
 	int		i;
 	int		count;
-	va_list	ap;
-    int check;
+	int		check;
 
-	va_start(ap, format);
 	i = 0;
 	count = 0;
 	if (write(1, "", 0) == -1)
@@ -30,17 +42,25 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-            check = handle_format(format[++i], ap);
-            if(check == -1)
-                return (-1);
+			check = handle_format(format[++i], ap);
+			if (check == -1)
+				return (-1);
 			count += check;
 			i++;
 		}
 		else
-		{
-			ft_putchar(format[i++]);
-			count++;
-		}
+			count += handle_non_format(format, &i);
 	}
+	return (count);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int		count;
+	va_list	ap;
+
+	va_start(ap, format);
+	count = start_printf(format, ap);
+	va_end(ap);
 	return (count);
 }

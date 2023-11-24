@@ -6,15 +6,15 @@
 /*   By: mboukour <mboukour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:33:15 by mboukour          #+#    #+#             */
-/*   Updated: 2023/11/24 19:27:43 by mboukour         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:23:41 by mboukour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_unsinged_long_hexa(char *base, unsigned long n)
+int	print_unsinged_long_hexa(char *base, unsigned long n)
 {
-	unsigned long len;
+	unsigned long	len;
 
 	len = 0;
 	if (n >= 16)
@@ -24,8 +24,7 @@ int print_unsinged_long_hexa(char *base, unsigned long n)
 	return (len);
 }
 
-
-int print_ptr(va_list ap)
+int	print_ptr(va_list ap)
 {
 	void					*ptr;
 	int						len;
@@ -33,7 +32,7 @@ int print_ptr(va_list ap)
 	char					*base;
 
 	base = ft_strdup("0123456789abcdef");
-	if(!base)
+	if (!base)
 		return (-1);
 	ptr = va_arg(ap, void *);
 	address = (unsigned long)ptr;
